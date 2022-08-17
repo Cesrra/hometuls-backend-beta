@@ -16,6 +16,11 @@ mongoose
   })
 // Setting up port with express js
 const employeeRoute = require('./routes/employee.route')
+const userRoute = require('./routes/user.route')
+const builderRoute = require('./routes/builder.route')
+const projectRoute = require('./routes/project.route')
+const storeRoute = require('./routes/store.route')
+const productRoute = require('./routes/product.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -27,6 +32,11 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, 'dist/hometuls-beta')))
 app.use('/', express.static(path.join(__dirname, 'dist/hometuls-beta')))
 app.use('/api', employeeRoute)
+app.use('/api/user', userRoute)
+app.use('/api/builder', builderRoute)
+app.use('/api/project', projectRoute)
+app.use('/api/store', storeRoute)
+app.use('/api/product', productRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
